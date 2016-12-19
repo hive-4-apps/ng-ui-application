@@ -1,0 +1,39 @@
+{
+  "name": "hive-4-apps",
+  "version": "0.1.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johanmaia/hive4apps-dist"
+  },
+  "author": {
+    "name": "Johan Maïa",
+    "email": "johan.maia@ntymail.com"
+  },
+  "contributors": [
+  	{
+      "name": "Johan Maïa",
+      "email": "johan.maia@ntymail.com"
+  	},
+	{
+	  "name": "Nicolas Poiteau",
+	  "email": "nicowebmaster@nico-webmaster.fr",
+	  "url" : "http://www.nico-webmaster.fr/"		
+	}
+  ],
+  "keywords": [
+    "angular",
+    "angular2"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johanmaia/hive4apps-dist/issues"
+  },
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "dependencies": {
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "private": true
+}
