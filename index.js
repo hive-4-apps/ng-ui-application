@@ -34,5 +34,6 @@ var HiveModule = (function () {
     ], HiveModule);
     return HiveModule;
 }());
-exports.HiveModule = HiveModule;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = HiveModule;
 //# sourceMappingURL=index.js.map
