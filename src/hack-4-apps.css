@@ -1,0 +1,66 @@
+/*
+* Name: hack-4-apps.scss
+* Definition : Hack of css - ng-content bug
+*/
+ui-application ui-section {
+  background-color: #f0f0f0;
+  min-height: 40px;
+  min-width: 40px; }
+
+ui-application[direction="COLUMN"] ui-slice {
+  resize: vertical;
+  overflow-x: scroll;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  max-width: 100%;
+  min-height: 40px; }
+  ui-application[direction="COLUMN"] ui-slice > .ui-slice {
+    width: 100%;
+    max-width: 100%;
+    min-height: 40px;
+    border-bottom: 1px solid #ccc; }
+  ui-application[direction="COLUMN"] ui-slice:first-child {
+    border-top: none; }
+  ui-application[direction="COLUMN"] ui-slice ui-section {
+    resize: horizontal;
+    overflow-y: scroll; }
+
+ui-application[direction="ROW"] ui-slice {
+  resize: horizontal;
+  overflow-y: scroll;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  height: 100%;
+  max-height: 100%;
+  min-width: 40px; }
+  ui-application[direction="ROW"] ui-slice > .ui-slice {
+    height: 100%;
+    max-height: 100%;
+    min-width: 40px;
+    border-right: 1px solid #ccc; }
+  ui-application[direction="ROW"] ui-slice:first-child {
+    border-left: none; }
+  ui-application[direction="ROW"] ui-slice ui-section {
+    resize: vertical;
+    overflow-x: scroll; }
+
+ui-application ui-slice {
+  border: 1px solid #060708;
+  background-color: #f0f0f0; }
+  ui-application ui-slice:last-child {
+    flex: 1; }
+  ui-application ui-slice .ui-slice > ui-section:last-child {
+    resize: none;
+    overflow: hidden;
+    flex: 1; }
+  ui-application ui-slice .ui-slice.row > ui-section {
+    border-right: 1px solid #060708; }
+    ui-application ui-slice .ui-slice.row > ui-section:last-child {
+      border-right: 0; }
+  ui-application ui-slice .ui-slice.column > ui-section {
+    border-bottom: 1px solid #060708; }
+    ui-application ui-slice .ui-slice.column > ui-section:last-child {
+      border-bottom: 0; }
