@@ -1,3 +1,3 @@
-export * from './src/application/application.component';
-export default class HiveModule {
+export * from './src/application.component';
+export declare class HiveModule {
 }
