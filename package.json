@@ -1,5 +1,5 @@
 {
-  "name": "hive-4-apps",
+  "name": "ng-ui-application",
   "version": "0.2.0",
   "scripts": {
     "postinstall": "gulp --gulpfile gulpfile.js"
