@@ -8,6 +8,7 @@ export declare class UIApplicationComponent {
     layoutType: layouTypeEnums;
     direction: DirectionEnums;
     constructor(elRef: ElementRef);
+    ngOnInit(): void;
     ngAfterViewInit(): void;
     widthHeightApply(): void;
     getSectionArray(n: number): number[];

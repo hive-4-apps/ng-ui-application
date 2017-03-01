@@ -20,12 +20,15 @@ var UIApplicationComponent = (function () {
         this.layoutType = layouTypeEnums.SPLITTER;
         this.direction = DirectionEnums.ROW;
     }
+    UIApplicationComponent.prototype.ngOnInit = function () {
+        console.log(this.elHTML.getAttribute("icon"));
+        this.elHTML.setAttribute("direction", this.direction.toString());
+    };
     UIApplicationComponent.prototype.ngAfterViewInit = function () {
         this.widthHeightApply();
     };
     UIApplicationComponent.prototype.widthHeightApply = function () {
         var offsetWidth = document.body.clientWidth;
-        console.log(offsetWidth);
         var offsetHeight = document.body.clientHeight;
         var mainWidth = offsetWidth.toString() + "px";
         //application height

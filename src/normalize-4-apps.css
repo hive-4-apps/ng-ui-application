@@ -25,3 +25,7 @@ body ui-application ui-section{
   display: flex;
 }
 
+body ui-application main#main-content > ui-section {
+  flex: 1;
+}
+

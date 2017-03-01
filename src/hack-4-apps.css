@@ -7,6 +7,11 @@ ui-application ui-section {
   min-height: 40px;
   min-width: 40px; }
 
+ui-application[direction="COLUMN"] main#main-content > ui-section {
+  border-top: 1px solid #060708; }
+  ui-application[direction="COLUMN"] main#main-content > ui-section:first-child {
+    border-top: none; }
+
 ui-application[direction="COLUMN"] ui-slice {
   resize: vertical;
   overflow-x: scroll;
@@ -26,6 +31,11 @@ ui-application[direction="COLUMN"] ui-slice {
   ui-application[direction="COLUMN"] ui-slice ui-section {
     resize: horizontal;
     overflow-y: scroll; }
+
+ui-application[direction="ROW"] main#main-content > ui-section {
+  border-left: 1px solid #060708; }
+  ui-application[direction="ROW"] main#main-content > ui-section:first-child {
+    border-left: none; }
 
 ui-application[direction="ROW"] ui-slice {
   resize: horizontal;
