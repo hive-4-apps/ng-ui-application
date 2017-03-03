@@ -7,7 +7,7 @@ distributed by Hive 4 apps :
 
 ##Installation
     npm install ng-ui-application --save
-[And clike here to see all instructions.](http://hive-4-apps.org/ng-ui-application/how-to-install-ng-ui-application)
+[And click here to see all instructions.](http://hive-4-apps.org/ng-ui-application/how-to-install-ng-ui-application)
 
 ##Usage
 ### Example    
@@ -26,6 +26,25 @@ distributed by Hive 4 apps :
         <ui-slice>
     </ui-application>
 [Demo and several examples](http://hive-4-apps.org/ng-ui-application/demo)
+
+#Release notes
+
+##0.2.4
+* README.md
+  * Corrected spelling error
+  * Release Notes added
+
+##0.2.3
+* Bugs fixed
+  * ui-sections wrapped directly by ui-application
+  * direction attribute setting up by default for ui-application
+
+##0.2.2
+* First published
+* UI Components
+  * ui-application
+  * ui-slice
+  * ui-section
 
 #Contributors
 
