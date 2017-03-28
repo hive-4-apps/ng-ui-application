@@ -29,6 +29,16 @@ distributed by Hive 4 apps :
 
 #Release notes
 
+##0.2.5
+* UI Improved
+  * unuseful scrollbar were removed
+  * Dynamically resize of components after a window resizing
+* Code optimization
+  * CSS was dispaced by component - hack-4-apss.css was removed
+  * ui-section and ui-aplication inherits from a common component called ui-frame
+* Bugs fixed
+  * For chrome - resizing for two ways is completely available but after to collapse the component
+
 ##0.2.4
 * README.md
   * Corrected spelling error

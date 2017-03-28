@@ -12,18 +12,30 @@ gulp.task('default', function() {
         }, function(res){
             //value is in res.path (the title option gives the key) 
             rootDest = rootDest + res.path + "__hive-4-apps/";
-            styleDest = rootDest + "styles/"; 
-            scriptsDest = rootDest + "scripts/"; 
-            
+            styleDest = rootDest + "styles/";
+            //scriptsDest = rootDest + "functions/";
+
             //CSS
-            gulp.src('./src/normalize.css')
+            gulp.src('./src/css/normalize.css')
                 .pipe(gulp.dest(styleDest));
-            gulp.src('./src/normalize-4-apps.css')
+            gulp.src('./src/css/normalize-4-apps.css')
                 .pipe(gulp.dest(styleDest));
-            gulp.src('./src/hack-4-apps.css')
+            gulp.src('./src/css/webpack-4-apps.css')
                 .pipe(gulp.dest(styleDest));
-                      
+            gulp.src('./src/css/themify-icons.css')
+                .pipe(gulp.dest(styleDest));
+   
+            //Fonts
+            gulp.src('./src/css/fonts/themify.eot')
+                .pipe(gulp.dest(rootDest + "scss/themify-icons/fonts/"));
+            gulp.src('./src/css/fonts/themify.svg')
+                .pipe(gulp.dest(rootDest + "scss/themify-icons/fonts/"));
+            gulp.src('./src/css/fonts/themify.ttf')
+                .pipe(gulp.dest(rootDest + "scss/themify-icons/fonts/"));
+            gulp.src('./src/css/fonts/themify.woff')
+                .pipe(gulp.dest(rootDest + "scss/themify-icons/fonts/"));
+            
             //Scripts
-           
+
         }));
 });

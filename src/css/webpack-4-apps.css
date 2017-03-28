@@ -1,0 +1,10 @@
+/*
+* Name: webpack-4-apps.css
+* Definition : patches for webpack
+*/
+html > body > * {
+  /* <app> or <my-app> */
+  height: 100%; }
+
+html > body > * > ui-application {
+  height: inherit !important; }

@@ -11,6 +11,7 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
+var frame_component_1 = require("./src/frame.component");
 var application_component_1 = require("./src/application.component");
 var slice_component_1 = require("./src/slice.component");
 var section_component_1 = require("./src/section.component");
@@ -26,6 +27,7 @@ HiveModule = __decorate([
             common_1.CommonModule
         ],
         declarations: [
+            frame_component_1.UIFrameComponent,
             application_component_1.UIApplicationComponent,
             section_component_1.UISectionComponent,
             slice_component_1.UISliceComponent
@@ -38,10 +40,15 @@ HiveModule = __decorate([
     })
 ], HiveModule);
 exports.HiveModule = HiveModule;
-// CSS stylesheets
 document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/normalize.css" type="text/css"/>';
 document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/normalize-4-apps.css" type="text/css"/>';
-document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/hack-4-apps.css" type="text/css"/>';
-//Javascript
-//document.querySelector('head').innerHTML += '<script src="__hive-4-apps/scripts/jquery.js"/>';
+document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/themify-icons.css" type="text/css"/>';
+try {
+    if (__webpack_require__ !== 'undefined') {
+        console.log("webpack-4-apps.css loading...");
+        document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/webpack-4-apps.css" type="text/css"/>';
+    }
+}
+catch (e) {
+}
 //# sourceMappingURL=index.js.map

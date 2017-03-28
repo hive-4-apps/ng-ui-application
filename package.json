@@ -1,16 +1,16 @@
 {
   "name": "ng-ui-application",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "scripts": {
     "postinstall": "gulp --gulpfile gulpfile.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hive-4-apps/ng-ui-application"
+    "url": "https://github.com/johanmaia/hive4apps-dist"
   },
   "author": {
-    "name": "Hive 4 apps",
-    "email": "contact@hive-4-apps.org"
+    "name": "Johan Maïa",
+    "email": "johan.maia@ntymail.com"
   },
   "contributors": [
   	{
@@ -25,13 +25,11 @@
   ],
   "keywords": [
     "angular",
-    "angular2",
-    "UI",
-    "application"
-  ],  
+    "angular2"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hive-4-apps/ng-ui-application/issues"
+    "url": "https://github.com/johanmaia/hive4apps-dist/issues"
   },
   "main": "index.js",
   "typings": "index.d.ts",
@@ -39,10 +37,12 @@
   "dependencies": {
     "gulp": "latest ",
     "gulp-prompt-async": "latest",
-    "insert-css": "^2.0.0"
+    "insert-css": "^2.0.0",
+    "normalize.css": "latest",
+    "themify-icons": "^1.0.0"
   },
   "engines": {
     "node": ">=0.8.0"
   },
-  "private": false
+  "private": true
 }
