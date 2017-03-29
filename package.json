@@ -1,12 +1,12 @@
 {
   "name": "ng-ui-application",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "scripts": {
     "postinstall": "gulp --gulpfile gulpfile.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/johanmaia/hive4apps-dist"
+    "url": "https://github.com/hive4apps/ng-ui-application"
   },
   "author": {
     "name": "Hive 4 apps",

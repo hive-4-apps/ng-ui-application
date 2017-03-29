@@ -60,6 +60,10 @@ distributed by Hive 4 apps :
 
 #Release notes
 
+##0.3.1
+* Bugs fixed
+  * html items inside header and footer slots stay to be inline after a window resize
+
 ##0.3.0
 * New features
   * Insert HTML code in the header and footer application component
