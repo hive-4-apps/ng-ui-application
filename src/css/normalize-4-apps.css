@@ -11,6 +11,10 @@ html, body{
   display: block;
 }
 
+html{
+  overflow: hidden;  
+}
+
 body > * {
   height: 100%;
 }
