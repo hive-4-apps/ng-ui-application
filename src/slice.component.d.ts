@@ -4,7 +4,7 @@ export declare class UISliceComponent {
     private direction;
     private parentDirection;
     private componentChildrenCount;
-    private divUISection;
+    private divUISlice;
     private isChrome;
     private isEdge;
     private isLastOne;
@@ -13,6 +13,7 @@ export declare class UISliceComponent {
     constructor(elRef: ElementRef);
     ngOnInit(): void;
     ngAfterViewChecked(): void;
+    private widthOrHeightApply(isInit);
     private widthOrHeightChildrenApply(isInit);
     static switchStringDirection(parentDirection: String): String;
     private childrenLengthApplyExceptionLastOne(isInit);

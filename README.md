@@ -60,6 +60,10 @@ distributed by Hive 4 apps :
 
 #Release notes
 
+##0.4.0
+* UI improved
+    * New design to prepare UX for futures components
+
 ##0.3.2
 * Bugs fixed
   * html items inside header and footer slots (of ui-application component) stay to be inline after a window resize
