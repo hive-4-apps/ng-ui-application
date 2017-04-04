@@ -9,18 +9,17 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var frame_component_1 = require("./src/frame.component");
-var application_component_1 = require("./src/application.component");
-var slice_component_1 = require("./src/slice.component");
-var section_component_1 = require("./src/section.component");
-__export(require("./src/application.component"));
-var HiveModule = (function () {
-    function HiveModule() {
-    }
-    return HiveModule;
-}());
+const core_1 = require("@angular/core");
+const common_1 = require("@angular/common");
+const frame_component_1 = require("./src/components/frame.component");
+const application_component_1 = require("./src/components/application.component");
+const slice_component_1 = require("./src/components/slice.component");
+const section_component_1 = require("./src/components/section.component");
+const panel_component_1 = require("./src/components/panel.component");
+const clickOutside_directive_1 = require("./src/directives/clickOutside.directive");
+__export(require("./src/components/application.component"));
+let HiveModule = class HiveModule {
+};
 HiveModule = __decorate([
     core_1.NgModule({
         imports: [
@@ -30,12 +29,16 @@ HiveModule = __decorate([
             frame_component_1.UIFrameComponent,
             application_component_1.UIApplicationComponent,
             section_component_1.UISectionComponent,
-            slice_component_1.UISliceComponent
+            slice_component_1.UISliceComponent,
+            panel_component_1.UIPanelComponent,
+            clickOutside_directive_1.ClickOutsideDirective
         ],
         exports: [
             application_component_1.UIApplicationComponent,
             section_component_1.UISectionComponent,
-            slice_component_1.UISliceComponent
+            slice_component_1.UISliceComponent,
+            panel_component_1.UIPanelComponent,
+            clickOutside_directive_1.ClickOutsideDirective
         ]
     })
 ], HiveModule);

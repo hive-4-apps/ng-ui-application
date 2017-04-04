@@ -11,19 +11,37 @@ distributed by Hive 4 apps :
 
 ##Usage
 ### Example 1  
-    <ui-application title="My application" icon="path/to/icon">
-        <ui-slice>
-            <ui-section title="section One">//HTML Content</ui-section>
-            <ui-section title="section Two">//HTML Content</ui-section>
-        <ui-slice>
-        <ui-slice>
-            <ui-section title="section Three">//HTML Content</ui-section>
-            <ui-section title="section Four">//HTML Content</ui-section>
-            <ui-section title="section Five">//HTML Content</ui-section>
-        <ui-slice>
-        <ui-slice>
-            <ui-section title="section Six">//HTML Content</ui-section>
-        <ui-slice>
+    <ui-application 
+            title="My application" 
+            icon="https://secure.gravatar.com/avatar/46d07086561c66caae16ce4d96bfd345?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png">
+        <ui-slice class="application-content">
+            <ui-section title="section One" [footer]="true">
+                <ui-panel title="Panel 1" class="section-content">//HTML Content Panel 1</ui-panel>
+            </ui-section>
+            <ui-section title="section Two">
+                <ui-panel title="Panel 2" class="section-content">//HTML Content Panel 2</ui-panel>
+                <ui-panel title="Panel 3" class="section-content">//HTML Content Panel 3</ui-panel>
+            </ui-section>
+        </ui-slice>
+        <ui-slice class="application-content">
+            <ui-section title="section Three">
+                <ui-panel title="Panel 4" class="section-content">//HTML Content Panel 4</ui-panel>
+                <ui-panel title="Panel 5" class="section-content">//HTML Content Panel 5</ui-panel>
+                <ui-panel title="Panel 6" class="section-content">//HTML Content Panel 6</ui-panel>
+            </ui-section>
+            <ui-section title="section Four" [header]="false">
+                <ui-panel title="Panel 7" class="section-content">//HTML Content Panel 7</ui-panel>
+            </ui-section>
+            <ui-section title="section Five">
+                <ui-panel title="Panel 8" class="section-content">//HTML Content Panel 8</ui-panel>
+                <ui-panel title="Panel 9" class="section-content">//HTML Content Panel 9</ui-panel>
+            </ui-section>
+        </ui-slice>   
+        <ui-slice class="application-content">
+            <ui-section title="section Six">
+                <ui-panel title="Panel 10" class="section-content">//HTML Content Panel 10</ui-panel>
+            </ui-section>
+        </ui-slice>
     </ui-application>
 ### Example 2
     <ui-application 
@@ -46,6 +64,9 @@ distributed by Hive 4 apps :
                             <a href="#">Symphony</a> |
                             <a href="#">Zend</a>
                     </nav>
+                    <ui-panel title="Unique Panel" class="section-content">
+                         //HTML Content   
+                    </ui-panel>
                     <button class="section-footer-slot-left">Firefox</button>
                     <button class="section-footer-slot-left">Chrome</button>
                     <button class="section-footer-slot-left">Edge</button>
@@ -60,18 +81,22 @@ distributed by Hive 4 apps :
 
 #Release notes
 
+##0.5.0
+* UI Components
+    * ui-panel
+
 ##0.4.0
 * UI improved
     * New design to prepare UX for futures components
 
 ##0.3.2
-* Bugs fixed
+* Bugs fixs
   * html items inside header and footer slots (of ui-application component) stay to be inline after a window resize
 
 
 
 ##0.3.1
-* Bugs fixed
+* Bugs fixs
   * html items inside header and footer slots stay to be inline after a window resize
 
 ##0.3.0
@@ -86,7 +111,7 @@ distributed by Hive 4 apps :
 * Code optimization
   * CSS was dispaced by component - hack-4-apss.css was removed
   * ui-section and ui-aplication inherits from a common component called ui-frame
-* Bugs fixed
+* Bugs fixs
   * For chrome - resizing for two ways is completely available but after to collapse the component
 
 ##0.2.4
@@ -95,7 +120,7 @@ distributed by Hive 4 apps :
   * Release Notes added
 
 ##0.2.3
-* Bugs fixed
+* Bugs fixs
   * ui-sections wrapped directly by ui-application
   * direction attribute setting up by default for ui-application
 
