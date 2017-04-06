@@ -16,6 +16,8 @@ const application_component_1 = require("./src/components/application.component"
 const slice_component_1 = require("./src/components/slice.component");
 const section_component_1 = require("./src/components/section.component");
 const panel_component_1 = require("./src/components/panel.component");
+const tag_component_1 = require("./src/components/tag.component");
+const label_component_1 = require("./src/components/label.component");
 const clickOutside_directive_1 = require("./src/directives/clickOutside.directive");
 __export(require("./src/components/application.component"));
 let HiveModule = class HiveModule {
@@ -31,6 +33,8 @@ HiveModule = __decorate([
             section_component_1.UISectionComponent,
             slice_component_1.UISliceComponent,
             panel_component_1.UIPanelComponent,
+            tag_component_1.UITagComponent,
+            label_component_1.UILabelComponent,
             clickOutside_directive_1.ClickOutsideDirective
         ],
         exports: [
@@ -46,6 +50,7 @@ exports.HiveModule = HiveModule;
 document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/normalize.css" type="text/css"/>';
 document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/normalize-4-apps.css" type="text/css"/>';
 document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/themify-icons.css" type="text/css"/>';
+document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/font-awesome.css" type="text/css"/>';
 try {
     if (__webpack_require__ !== 'undefined') {
         console.log("webpack-4-apps.css loading...");

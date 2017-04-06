@@ -24,8 +24,13 @@ gulp.task('default', function() {
                 .pipe(gulp.dest(styleDest));
             gulp.src('./src/css/themify-icons.css')
                 .pipe(gulp.dest(styleDest));
+            gulp.src('./src/css/font-awesome.css')
+                .pipe(gulp.dest(styleDest));
    
             //Fonts
+            gulp.src('./src/css/fonts/Ubunthu.woff2')
+                .pipe(gulp.dest(rootDest + "fonts/"));
+            //Themify
             gulp.src('./src/css/fonts/themify.eot')
                 .pipe(gulp.dest(rootDest + "scss/themify-icons/fonts/"));
             gulp.src('./src/css/fonts/themify.svg')
@@ -34,6 +39,19 @@ gulp.task('default', function() {
                 .pipe(gulp.dest(rootDest + "scss/themify-icons/fonts/"));
             gulp.src('./src/css/fonts/themify.woff')
                 .pipe(gulp.dest(rootDest + "scss/themify-icons/fonts/"));
+            //Font awesome
+            gulp.src('./src/css/fonts/fontAwesome.otf')
+                .pipe(gulp.dest(rootDest + "fonts/"));
+            gulp.src('./src/css/fonts/fontawesome-webfont.eot')
+                .pipe(gulp.dest(rootDest + "fonts/"));
+            gulp.src('./src/css/fonts/fontawesome-webfont.svg')
+                .pipe(gulp.dest(rootDest + "fonts/"));
+            gulp.src('./src/css/fonts/fontawesome-webfont.ttf')
+                .pipe(gulp.dest(rootDest + "fonts/"));
+            gulp.src('./src/css/fonts/fontawesome-webfont.woff')
+                .pipe(gulp.dest(rootDest + "fonts/"));
+            gulp.src('./src/css/fonts/fontawesome-webfont.woff2')
+                .pipe(gulp.dest(rootDest + "fonts/"));
             
             //Scripts
 

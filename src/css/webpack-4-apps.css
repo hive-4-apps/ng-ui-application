@@ -8,3 +8,15 @@ html > body > * {
 
 html > body > * > ui-application {
   height: inherit !important; }
+
+ui-section > ui-frame > main > nav.tabs > ui-tag.unique-tab > h3,
+ui-section[positiontabs="TOP"] > ui-frame > main > nav.tabs > ui-tag.unique-tab > h3 {
+  margin-bottom: -1px; }
+
+ui-section[positiontabs="BOTTOM"] > ui-frame > main > nav.tabs > ui-tag.unique-tab > h3 {
+  margin-bottom: 0px;
+  margin-top: -1px; }
+
+ui-section[positiontabs="LEFT"] > ui-frame > main > nav.tabs > ui-tag.unique-tab > h3,
+ui-section[positiontabs="RIGHT"] > ui-frame > main > nav.tabs > ui-tag.unique-tab > h3 {
+  margin-bottom: 0px; }
