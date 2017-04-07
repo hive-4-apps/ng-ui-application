@@ -87,7 +87,8 @@ UITagComponent = __decorate([
     flex: 1; }
     :host.unique-tab > h3 {
       display: flex;
-      flex: 1; }
+      flex: 1;
+      margin-bottom: -1px; }
       :host.unique-tab > h3 > /deep/ ui-label > img {
         height: 14px;
         width: 14px; }

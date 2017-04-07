@@ -1463,8 +1463,6 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
 
 :host {
   background-color: #23282d;
-  /*min-height: $section-collapse-size;
-  min-width: $section-collapse-size;*/
   overflow: hidden;
   display: flex; }
   :host:last-child {
@@ -1511,7 +1509,8 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
     position: relative;
     display: flex;
     align-items: flex-end;
-    background: #23282d; }
+    background: #23282d;
+    z-index: 3; }
     :host > div.ui-slice-buttons > button.btn-resize {
       /* Use only for Chrome */
       width: 12px;
@@ -1560,6 +1559,9 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
     margin-top: -1px; }
     :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.unique-tab {
       height: initial; }
+    :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
+      margin-bottom: 0px;
+      margin-top: -1px; }
     :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
       margin-bottom: 0px;
       border-top: 1px solid #505b66; }
@@ -1570,13 +1572,15 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         border-bottom-left-radius: 2.5px;
         border-bottom-right-radius: 2.5px; }
       :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
-        margin-bottom: 0px;
         border-bottom: 1px solid #1D71BC;
         border-top: none; }
   :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag {
     margin-right: -1px; }
+    :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.unique-tab > h3 {
+      margin-bottom: 0px; }
     :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
-      border-bottom: 1px solid #060708; }
+      border-bottom: 1px solid #060708;
+      margin-right: -1px; }
     :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
       margin-bottom: 0px;
       border-right: 1px solid #505b66; }
@@ -1592,9 +1596,12 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         border-right: none; }
   :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag {
     margin-left: -1px; }
+    :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.unique-tab > h3 {
+      margin-bottom: 0px; }
     :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
       border-bottom: 1px solid #060708;
-      border-left: none; }
+      border-left: none;
+      margin-left: -1px; }
     :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
       margin-bottom: 0px; }
       :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
@@ -1606,23 +1613,6 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         margin-bottom: 0px;
         border-bottom: 1px solid #1D71BC;
         border-left: none; }
-
-@supports (-ms-ime-align: auto) { {
-    /*Hack for Edge*/ }
-  :host /deep/ > ui-frame > main > nav.tabs > ui-tag.unique-tab > h3 {
-    margin-bottom: -1px; }
-  :host[positiontabs="TOP"] /deep/ > ui-frame > main > nav.tabs > ui-tag.unique-tab > h3 {
-    margin-bottom: -1px; }
-  :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs > ui-tag > h3 {
-    margin-bottom: 0px; }
-  :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag {
-    margin-left: -2px; }
-    :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.unique-tab > h3 {
-      margin-bottom: 0px; }
-  :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag {
-    margin-right: -2px; }
-    :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.unique-tab > h3 {
-      margin-bottom: 0px; } }
 `],
         template: `<ui-frame [icon]="icon" [title]="title" hlevel="2" [header]="header" [footer]="footer" [direction]="positionTabs.contentDirection">
     <ng-content class="frame-header-slot-left" select=".section-header-slot-left"></ng-content>

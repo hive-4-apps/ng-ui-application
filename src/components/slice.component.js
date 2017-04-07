@@ -1451,6 +1451,7 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
     display: flex;
     align-items: flex-end;
     background: #23282d;
+    z-index: 3;
     background: #23282d; }
     :host > div.ui-slice-buttons > button.btn-resize {
       /* Use only for Chrome */

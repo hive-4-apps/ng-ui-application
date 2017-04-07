@@ -69,7 +69,7 @@ UIFrameComponent = __decorate([
       :host header > div.slots > div /deep/ > * {
         display: inline-flex; }
   :host main {
-    overflow: auto;
+    overflow: hidden;
     display: flex;
     flex: 1; }
     :host main > div {

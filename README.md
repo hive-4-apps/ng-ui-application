@@ -81,10 +81,14 @@ distributed by Hive 4 apps :
 
 #Release notes
 
+##0.6.1
+* Bugs fixs
+  * Patches for the Panel component
+
 ##0.6.0
 * New features
     * "positiontabs" attribute created => to choose the tabs location in ui-section
-    * "icon" attribute updated => can support an image or a icon from fonts - useful for ui-application, ui-section and ui-panel
+    * "icon" attribute updated => can support an image or an icon from fonts - useful for ui-application, ui-section and ui-panel
     * [Themify icons](https://themify.me/themify-icons) and [Font awesome](http://fontawesome.io/icons/) are supported 
 
 ##0.5.0
