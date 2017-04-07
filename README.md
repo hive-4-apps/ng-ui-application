@@ -11,35 +11,37 @@ distributed by Hive 4 apps :
 
 ##Usage
 ### Example 1  
-    <ui-application 
-            title="My application" 
-            icon="https://secure.gravatar.com/avatar/46d07086561c66caae16ce4d96bfd345?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png">
+    <ui-application
+            title="My application"
+            icon="fa fa-html5">
         <ui-slice class="application-content">
             <ui-section title="section One" [footer]="true">
                 <ui-panel title="Panel 1" class="section-content">//HTML Content Panel 1</ui-panel>
             </ui-section>
-            <ui-section title="section Two">
-                <ui-panel title="Panel 2" class="section-content">//HTML Content Panel 2</ui-panel>
-                <ui-panel title="Panel 3" class="section-content">//HTML Content Panel 3</ui-panel>
+            <ui-section icon="fa fa-android" title="section Two" positiontabs="LEFT">
+                <ui-panel icon="http://icons.iconarchive.com/icons/elegantthemes/beautiful-flat/128/shop-icon.png" class="section-content">//HTML Content Panel 2</ui-panel>
+                <ui-panel icon="http://icons.iconarchive.com/icons/elegantthemes/beautiful-flat/96/global-icon.png" class="section-content">//HTML Content Panel 3</ui-panel>
             </ui-section>
         </ui-slice>
         <ui-slice class="application-content">
-            <ui-section title="section Three">
-                <ui-panel title="Panel 4" class="section-content">//HTML Content Panel 4</ui-panel>
-                <ui-panel title="Panel 5" class="section-content">//HTML Content Panel 5</ui-panel>
-                <ui-panel title="Panel 6" class="section-content">//HTML Content Panel 6</ui-panel>
+            <ui-section icon="icon-files" title="section Three" positiontabs="RIGHT">
+                <ui-panel title="Panel 4" icon="http://icons.iconarchive.com/icons/elegantthemes/beautiful-flat/128/compose-icon.png" class="section-content">//HTML Content Panel 4</ui-panel>
+                <ui-panel title="Panel 5" icon="http://icons.iconarchive.com/icons/elegantthemes/beautiful-flat/128/circlecompass-icon.png" class="section-content">//HTML Content Panel 5</ui-panel>
+                <ui-panel title="Panel 6" icon="http://icons.iconarchive.com/icons/elegantthemes/beautiful-flat-one-color/128/paint-brush-2-icon.png" class="section-content">//HTML Content Panel 6</ui-panel>
             </ui-section>
-            <ui-section title="section Four" [header]="false">
-                <ui-panel title="Panel 7" class="section-content">//HTML Content Panel 7</ui-panel>
+            <ui-section title="section Four" [header]="false" positiontabs="BOTTOM">
+                <ui-panel title="Panel 7" icon="fa fa-cubes" class="section-content">//HTML Content Panel 7</ui-panel>
+                <ui-panel title="Panel 8" icon="fa fa-cubes" class="section-content">//HTML Content Panel 8</ui-panel>
             </ui-section>
-            <ui-section title="section Five">
-                <ui-panel title="Panel 8" class="section-content">//HTML Content Panel 8</ui-panel>
-                <ui-panel title="Panel 9" class="section-content">//HTML Content Panel 9</ui-panel>
+            <ui-section icon="http://image.flaticon.com/icons/png/512/296/296530.png"  title="section Five">
+                <ui-panel title="Panel 9" icon="icon-desktop" class="section-content">//HTML Content Panel 9</ui-panel>
+                <ui-panel title="Panel 10" icon="icon-tablet" class="section-content">//HTML Content Panel 10</ui-panel>
+                <ui-panel title="Panel 11" icon="icon-mobile" class="section-content">//HTML Content Panel 11</ui-panel>
             </ui-section>
-        </ui-slice>   
+        </ui-slice>
         <ui-slice class="application-content">
-            <ui-section title="section Six">
-                <ui-panel title="Panel 10" class="section-content">//HTML Content Panel 10</ui-panel>
+            <ui-section title="section Six" positiontabs="BOTTOM">
+                <ui-panel title="Panel 12" class="section-content">//HTML Content Panel 12</ui-panel>
             </ui-section>
         </ui-slice>
     </ui-application>
