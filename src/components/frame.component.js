@@ -55,8 +55,8 @@ UIFrameComponent = __decorate([
   display: flex;
   flex: 1;
   flex-direction: column;
-  min-width: 0px;
-  min-height: 0px; }
+  min-width: 0;
+  min-height: 0; }
   :host header > div.slots {
     display: flex;
     flex: 1;

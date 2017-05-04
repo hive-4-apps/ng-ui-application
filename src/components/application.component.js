@@ -25,8 +25,8 @@ let UIApplicationComponent = class UIApplicationComponent {
     }
     ngOnInit() {
         this.elHTML.setAttribute("direction", this.direction.toString());
-        var frameChild = this.elHTML.children[0];
-        var mainContent = frameChild.getElementsByTagName("MAIN").item(0);
+        let frameChild = this.elHTML.children[0];
+        let mainContent = frameChild.getElementsByTagName("MAIN").item(0);
         mainContent.setAttribute("id", "main-content");
         this.componentChildren = getDirectChildrenById("#main-content");
         this.componentChildrenCount = getDirectChildrenCount("#main-content");
@@ -36,12 +36,11 @@ let UIApplicationComponent = class UIApplicationComponent {
         this.isSystemJS = checkIsSystemJS();
         this.scrollbarWidth = (this.isEdge) ? 12 : 17;
         this.bodyWidth = document.body.clientWidth;
-        this.mainContentHeight = this.getMainContentHeight();
-        this.widthHeightApply(true);
+        this.widthHeightApply();
         this.childrenSetId();
     }
     getMainContentHeight() {
-        var mainContentInnerHeight;
+        let mainContentInnerHeight;
         mainContentInnerHeight = window.innerHeight;
         if (this.header) {
             mainContentInnerHeight = mainContentInnerHeight - 33;
@@ -51,73 +50,49 @@ let UIApplicationComponent = class UIApplicationComponent {
         }
         return mainContentInnerHeight;
     }
-    widthHeightApply(isInit) {
+    widthHeightApply() {
         this.bodyWidth = document.body.clientWidth;
-        this.mainContentHeight = this.getMainContentHeight();
-        this.mainContentWidthApply(isInit);
-        this.mainContentHeightApply(isInit);
+        console.debug("body width" + this.bodyWidth);
+        this.mainContentWidthApply();
+        this.mainContentHeightApply();
         if (this.componentChildrenCount > 1) {
-            this.childrenLengthApplyExceptLastOne(isInit);
+            this.childrenLengthApplyExceptLastOne();
         }
     }
-    mainContentWidthApply(isInit) {
-        var minWidth = this.bodyWidth.toString() + "px";
-        document.getElementById("main-content").style.minWidth = minWidth;
-        var mainWidth;
-        mainWidth = this.bodyWidth.toString() + "px";
-        if (this.isSystemJS) {
-            mainWidth = this.bodyWidth.toString() + "px";
-        }
-        else {
-            mainWidth = (isInit && !this.isEdge) ? (this.bodyWidth + (this.scrollbarWidth - 1)).toString() + "px" : this.bodyWidth.toString() + "px";
-        }
+    mainContentWidthApply() {
+        let mainWidth = this.bodyWidth.toString() + "px";
         document.getElementById("main-content").style.width = mainWidth;
     }
-    mainContentHeightApply(isInit) {
-        var mainHeight = this.mainContentHeight.toString() + "px";
-        if (this.componentChildrenCount > 1) {
-            if (this.isSystemJS) {
-                if (this.isFirefox || this.isEdge) {
-                    mainHeight = (this.mainContentHeight + this.scrollbarWidth).toString() + "px";
-                }
-            }
-        }
+    mainContentHeightApply() {
+        this.mainContentHeight = this.getMainContentHeight();
+        let mainHeight = this.mainContentHeight.toString() + "px";
+        console.debug("main content" + mainHeight);
         document.getElementById("main-content").style.flexBasis = mainHeight;
     }
-    childrenLengthApplyExceptLastOne(isInit) {
+    childrenLengthApplyExceptLastOne() {
         if (this.componentChildrenCount < 2) {
-            console.error("childrenLengthApplyExceptLastOne => children count < 2");
+            console.error("%s childrenLengthApplyExceptLastOne => children count < 2", "Ng UI Application ->");
             return;
         }
-        var componentChildren = getDirectChildrenById("#main-content");
-        if (isInit || this.isEdge) {
-            for (var nChild = 0; nChild < this.componentChildrenCount - 1; nChild++) {
-                var currentChildComponent = componentChildren.item(nChild);
-                if (this.direction == DirectionEnums.ROW) {
-                    currentChildComponent.style.width = (this.bodyWidth / this.componentChildrenCount).toString() + "px";
-                }
-                else {
-                    currentChildComponent.style.height = (this.mainContentHeight / this.componentChildrenCount).toString() + "px";
-                }
+        let componentChildren = getDirectChildrenById("#main-content");
+        for (let nChild = 0; nChild < this.componentChildrenCount - 1; nChild++) {
+            let currentChildComponent = componentChildren.item(nChild);
+            if (this.direction == DirectionEnums.ROW) {
+                currentChildComponent.style.width = (this.bodyWidth / this.componentChildrenCount).toString() + "px";
+            }
+            else {
+                currentChildComponent.style.height = (this.mainContentHeight / this.componentChildrenCount).toString() + "px";
             }
         }
-    }
-    switchDirection(childDirection) {
-        var styles;
-        styles = {};
-        var switchedDirection;
-        switchedDirection = (childDirection === "COLUMN") ? "ROW" : "COLUMN";
-        styles["flex-direction"] = switchedDirection;
-        return styles;
     }
     childrenSetId() {
         if (this.componentChildrenCount === 0) {
             console.error("childrenSetId => children count === 0");
             return;
         }
-        for (var nChild = 0; nChild < this.componentChildrenCount; nChild++) {
-            var currentChildComponent = this.componentChildren.item(nChild);
-            var tagName = currentChildComponent.tagName.toLowerCase();
+        for (let nChild = 0; nChild < this.componentChildrenCount; nChild++) {
+            let currentChildComponent = this.componentChildren.item(nChild);
+            let tagName = currentChildComponent.tagName.toLowerCase();
             currentChildComponent.setAttribute("id", tagName + "-" + nChild);
         }
     }
@@ -225,7 +200,7 @@ UIApplicationComponent = __decorate([
     :host[direction="COLUMN"] /deep/ ui-frame > main /deep/ > ui-slice > div.ui-slice-buttons {
       height: 12px; }
   :host[direction="ROW"] /deep/ ui-frame > main /deep/ > ui-section {
-    border-right: 1px solid #ccc; }
+    border-right: 1px solid #060708; }
     :host[direction="ROW"] /deep/ ui-frame > main /deep/ > ui-section:last-child {
       border-right: none; }
       :host[direction="ROW"] /deep/ ui-frame > main /deep/ > ui-section:last-child:first-child {
@@ -249,7 +224,7 @@ UIApplicationComponent = __decorate([
 </ui-frame>
 `,
         host: {
-            '(window:resize)': 'widthHeightApply(false)'
+            '(window:resize)': 'widthHeightApply()'
         }
     }),
     __metadata("design:paramtypes", [core_1.ElementRef])
@@ -281,7 +256,6 @@ function getDirectChildrenById(selector) {
     return document.querySelectorAll(`${selector} > *`);
 }
 function getDirectChildrenCount(selector) {
-    var directChildrenCount = getDirectChildrenById(`${selector}`).length;
-    return directChildrenCount;
+    return getDirectChildrenById(`${selector}`).length;
 }
 //# sourceMappingURL=application.component.js.map

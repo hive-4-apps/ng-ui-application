@@ -24,11 +24,10 @@ export declare class UIApplicationComponent {
     constructor(elRef: ElementRef);
     ngOnInit(): void;
     private getMainContentHeight();
-    private widthHeightApply(isInit);
-    private mainContentWidthApply(isInit);
-    private mainContentHeightApply(isInit);
-    private childrenLengthApplyExceptLastOne(isInit);
-    switchDirection(childDirection: String): any;
+    private widthHeightApply();
+    private mainContentWidthApply();
+    private mainContentHeightApply();
+    private childrenLengthApplyExceptLastOne();
     private childrenSetId();
     private isSlicesOrSectionsChildren();
     focusPanels(panel: UIPanelComponent): void;

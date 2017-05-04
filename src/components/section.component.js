@@ -68,22 +68,22 @@ let UISectionComponent = class UISectionComponent {
         this.isLastOne = this.checkIsLastOne();
         this.changeDetectorRef.detectChanges();
         if (this.isChrome && this.wrappedBySlice && !this.isLastOne) {
-            var listButtons = getButtonsByClassName("#" + this.id + " > .ui-slice-buttons", ".btn-resize");
-            var resizeButton = listButtons[0];
+            let listButtons = getButtonsByClassName("#" + this.id + " > .ui-slice-buttons", ".btn-resize");
+            let resizeButton = listButtons[0];
             this.parentDirection = document.getElementsByTagName("ui-application").item(0).getAttribute("direction");
             if (this.parentDirection === "COLUMN") {
                 resizeButton.addEventListener("mousedown", function (e) {
-                    var uiSectionButtons = this.parentElement;
-                    var uiSection = uiSectionButtons.parentElement;
+                    let uiSectionButtons = this.parentElement;
+                    let uiSection = uiSectionButtons.parentElement;
                     uiSection.style.width = "12px";
                     this.style.display = "none";
-                    uiSectionButtons.style.height = "24px";
+                    uiSectionButtons.style.marginBottom = "8px";
                 });
             }
             else {
                 resizeButton.addEventListener("mousedown", function (e) {
-                    var uiSectionButtons = this.parentElement;
-                    var uiSection = uiSectionButtons.parentElement;
+                    let uiSectionButtons = this.parentElement;
+                    let uiSection = uiSectionButtons.parentElement;
                     uiSection.style.height = "12px";
                     this.style.display = "none";
                     uiSectionButtons.style.marginRight = "8px";
@@ -117,9 +117,9 @@ let UISectionComponent = class UISectionComponent {
         panel.focus = true;
     }
     checkIsLastOne() {
-        var parentChildren;
+        let parentChildren;
         if (this.wrappedBySlice) {
-            var parentId = this.elHTML.parentElement.parentElement.id;
+            let parentId = this.elHTML.parentElement.parentElement.id;
             parentChildren = getDirectChildren("#" + parentId + " > .ui-slice");
         }
         else {
@@ -131,7 +131,7 @@ let UISectionComponent = class UISectionComponent {
         return this.elHTML.parentElement.parentElement.tagName === "UI-SLICE";
     }
     setPanelsId() {
-        var nbPanel = 0;
+        let nbPanel = 0;
         this.panelChildren.toArray().forEach((panel) => {
             panel.elHTML.id = "ui-panel-" + this.numberSection + "-" + nbPanel;
             nbPanel++;
@@ -1482,13 +1482,12 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         padding-left: 5px;
         display: inline-flex; }
     :host /deep/ > ui-frame > main {
-      background-color: #060708;
-      /* info : need to see resize icon for Chrome*/
-      padding: 2px; }
+      background-color: #505b66;
+      /* info : need to see resize icon for Chrome*/ }
       :host /deep/ > ui-frame > main > nav.tabs {
         display: flex;
         align-items: start;
-        height: 25px; }
+        background: #23282d; }
       :host /deep/ > ui-frame > main > section.tab-content {
         display: flex;
         flex: 1; }
@@ -1512,11 +1511,12 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
     background: #23282d;
     z-index: 3; }
     :host > div.ui-slice-buttons > button.btn-resize {
-      /* Use only for Chrome */
+      /* For the moment : use only for Chrome */
+      background: #23282d;
       width: 12px;
       height: 12px;
       line-height: 4px;
-      bottom: 0px;
+      bottom: 0;
       right: 0;
       position: absolute;
       padding: 0;
@@ -1538,81 +1538,406 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         font-size: 10px;
         color: inherit; }
       :host > div.ui-slice-buttons > button.btn-resize:before {
-        margin-right: 0px;
+        margin-right: 0;
         font-size: 8px; }
-    :host > div.ui-slice-buttons > button.btn-resize {
-      background: #23282d;
-      width: 12px;
-      height: 12px; }
-      :host > div.ui-slice-buttons > button.btn-resize:before {
-        font-size: 8px; }
-  :host[positiontabs="TOP"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
-    margin-bottom: -1px; }
-    :host[positiontabs="TOP"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
-      border-bottom: none;
-      border-top-left-radius: 2.5px;
-      border-top-right-radius: 2.5px; }
-    :host[positiontabs="TOP"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
-      margin-bottom: -1px;
-      border-bottom: none; }
-  :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag {
-    margin-top: -1px; }
-    :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.unique-tab {
-      height: initial; }
-    :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
-      margin-bottom: 0px;
+  :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs {
+    height: 24px; }
+    :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
+      /* Panel title */
+      border: 1px solid #23282d;
+      padding: 0 5px;
+      height: 23px;
+      font-weight: normal;
+      margin: 0;
+      margin-bottom: -1px; }
+      :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a {
+        text-decoration: none;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center; }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > img, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.icon, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.icon {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+          :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label:not(.unique), :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+    :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
+      z-index: 2; }
+      :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
+        background-color: #505b66;
+        border: 1px solid #505b66;
+        border-top-left-radius: 2.5px;
+        border-top-right-radius: 2.5px; }
+      :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
+        border: 1px solid #1D71BC;
+        z-index: 2;
+        border-bottom: 1px solid #505b66; }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > img, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.icon, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label:not(.unique), :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > img, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.icon, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label:not(.unique), :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+      :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab {
+        display: flex;
+        flex: 1;
+        height: initial;
+        /* bug fixed : avoid highlight border appears during vertical window resizing*/ }
+        :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 {
+          display: flex;
+          flex: 1; }
+          :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > img, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > img {
+            height: 14px;
+            width: 14px; }
+          :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.icon, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.icon {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+          :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label, :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+            :host:not([positiontabs]) /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label:not(.unique), :host[positiontabs=""] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label:not(.unique) {
+              margin-left: 5px; }
+  :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs {
+    height: 24px; }
+    :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
+      /* Panel title */
+      border: 1px solid #23282d;
+      padding: 0 5px;
+      height: 23px;
+      font-weight: normal;
+      margin: 0;
+      margin-bottom: -1px; }
+      :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a {
+        text-decoration: none;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center; }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.icon {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+          :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+    :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
+      z-index: 2; }
+      :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
+        background-color: #505b66;
+        border: 1px solid #505b66;
+        border-top-left-radius: 2.5px;
+        border-top-right-radius: 2.5px; }
+      :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
+        border: 1px solid #1D71BC;
+        z-index: 2;
+        border-bottom: 1px solid #505b66; }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+      :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab {
+        display: flex;
+        flex: 1;
+        height: initial;
+        /* bug fixed : avoid highlight border appears during vertical window resizing*/ }
+        :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 {
+          display: flex;
+          flex: 1; }
+          :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > img {
+            height: 14px;
+            width: 14px; }
+          :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.icon {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+          :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+            :host[positiontabs=TOP] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label:not(.unique) {
+              margin-left: 5px; }
+  :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs {
+    height: 24px; }
+    :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
+      /* Panel title */
+      border: 1px solid #23282d;
+      padding: 0 5px;
+      height: 23px;
+      font-weight: normal;
+      margin: 0;
       margin-top: -1px; }
-    :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
-      margin-bottom: 0px;
-      border-top: 1px solid #505b66; }
-      :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
-        border-top: none;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
+      :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a {
+        text-decoration: none;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center; }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.icon {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+          :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+    :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
+      z-index: 2; }
+      :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
+        background-color: #505b66;
+        border: 1px solid #505b66;
         border-bottom-left-radius: 2.5px;
         border-bottom-right-radius: 2.5px; }
-      :host[positiontabs="BOTTOM"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
-        border-bottom: 1px solid #1D71BC;
-        border-top: none; }
-  :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag {
-    margin-right: -1px; }
-    :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.unique-tab > h3 {
-      margin-bottom: 0px; }
-    :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
-      border-bottom: 1px solid #060708;
+      :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
+        border: 1px solid #1D71BC;
+        z-index: 2;
+        border-top: 1px solid #505b66; }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+      :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab {
+        display: flex;
+        flex: 1;
+        height: initial;
+        /* bug fixed : avoid highlight border appears during vertical window resizing*/ }
+        :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 {
+          display: flex;
+          flex: 1; }
+          :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > img {
+            height: 14px;
+            width: 14px; }
+          :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.icon {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+          :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+            :host[positiontabs=BOTTOM] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label:not(.unique) {
+              margin-left: 5px; }
+  :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs {
+    height: initial; }
+    :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
+      /* Panel title */
+      border: 1px solid #23282d;
+      padding: 0 5px;
+      height: 22px;
+      font-weight: normal;
+      margin: 0;
       margin-right: -1px; }
-    :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
-      margin-bottom: 0px;
-      border-right: 1px solid #505b66; }
-      :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
-        border-right: none;
-        border-top-right-radius: 0;
+      :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a {
+        text-decoration: none;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center; }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.icon {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+          :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+    :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
+      z-index: 2; }
+      :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
+        background-color: #505b66;
+        border: 1px solid #505b66;
         border-top-left-radius: 2.5px;
-        border-bottom-left-radius: 2.5px;
-        border-bottom: 1px solid #505b66; }
-      :host[positiontabs="LEFT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
-        margin-bottom: 0px;
-        border-bottom: 1px solid #1D71BC;
-        border-right: none; }
-  :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag {
-    margin-left: -1px; }
-    :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.unique-tab > h3 {
-      margin-bottom: 0px; }
-    :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
-      border-bottom: 1px solid #060708;
-      border-left: none;
+        border-bottom-left-radius: 2.5px; }
+      :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
+        border: 1px solid #1D71BC;
+        z-index: 2;
+        border-right: 1px solid #505b66; }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+      :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab {
+        display: flex;
+        height: initial;
+        /* bug fixed : avoid highlight border appears during vertical window resizing*/ }
+        :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 {
+          display: flex;
+          flex: 1; }
+          :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > img {
+            height: 14px;
+            width: 14px; }
+          :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.icon {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+          :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+            :host[positiontabs=LEFT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label:not(.unique) {
+              margin-left: 5px; }
+  :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs {
+    height: initial; }
+    :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 {
+      /* Panel title */
+      border: 1px solid #23282d;
+      padding: 0 5px;
+      height: 22px;
+      font-weight: normal;
+      margin: 0;
       margin-left: -1px; }
-    :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
-      margin-bottom: 0px; }
-      :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
-        border-top-left-radius: 0;
+      :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a {
+        text-decoration: none;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center; }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.icon {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label {
+          color: #b9c1c9;
+          font-size: 0.9em; }
+          :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+    :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active {
+      z-index: 2; }
+      :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active > h3 {
+        background-color: #505b66;
+        border: 1px solid #505b66;
         border-top-right-radius: 2.5px;
-        border-bottom-right-radius: 2.5px;
-        border-bottom: 1px solid #505b66; }
-      :host[positiontabs="RIGHT"] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
-        margin-bottom: 0px;
-        border-bottom: 1px solid #1D71BC;
-        border-left: none; }
+        border-bottom-right-radius: 2.5px; }
+      :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 {
+        border: 1px solid #1D71BC;
+        z-index: 2;
+        border-left: 1px solid #505b66; }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > img {
+          height: 14px;
+          width: 14px; }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.icon {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label {
+          color: #f0f0f0;
+          font-size: 0.9em; }
+          :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.focus > h3 > a > /deep/ ui-label > span.label:not(.unique) {
+            margin-left: 5px; }
+      :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab {
+        display: flex;
+        height: initial;
+        /* bug fixed : avoid highlight border appears during vertical window resizing*/ }
+        :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 {
+          display: flex;
+          flex: 1; }
+          :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > img {
+            height: 14px;
+            width: 14px; }
+          :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.icon {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+          :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label {
+            color: #b9c1c9;
+            font-size: 0.9em; }
+            :host[positiontabs=RIGHT] /deep/ > ui-frame > main > nav.tabs /deep/ > ui-tag.active.unique-tab > h3 > /deep/ ui-label > span.label:not(.unique) {
+              margin-left: 5px; }
 `],
         template: `<ui-frame [icon]="icon" [title]="title" hlevel="2" [header]="header" [footer]="footer" [direction]="positionTabs.contentDirection">
     <ng-content class="frame-header-slot-left" select=".section-header-slot-left"></ng-content>
@@ -1677,13 +2002,12 @@ function checkIsChrome() {
     return /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 }
 function getButtonsByClassName(selector, classButton) {
-    var children = document.querySelectorAll(`${selector} > ${classButton}`);
-    return children;
+    return document.querySelectorAll(`${selector} > ${classButton}`);
 }
 function getDirectChildren(selector) {
-    var directChildren = [];
-    var children = document.querySelectorAll(`${selector} > *`);
-    for (var i = 0; i < children.length; i++) {
+    let directChildren = [];
+    let children = document.querySelectorAll(`${selector} > *`);
+    for (let i = 0; i < children.length; i++) {
         if (children[i].nodeName.indexOf("UI-") === 0) {
             directChildren.push(children[i]);
         }

@@ -83,6 +83,20 @@ distributed by Hive 4 apps :
 
 #Release notes
 
+##0.6.4
+  * uninstall system cleaner
+  * CSS stylesheets location improvement
+  * CSS optimization
+  * few design changes (ui-section content & tabs)
+
+##0.6.3
+* README.md
+   * Corrected spelling error
+   
+##0.6.2
+* README.md
+  * Example 1 modified with new features included
+
 ##0.6.1
 * Bugs fixs
   * Patches for the Panel component
@@ -105,8 +119,6 @@ distributed by Hive 4 apps :
 * Bugs fixs
   * html items inside header and footer slots (of ui-application component) stay to be inline after a window resize
 
-
-
 ##0.3.1
 * Bugs fixs
   * html items inside header and footer slots stay to be inline after a window resize
@@ -121,8 +133,8 @@ distributed by Hive 4 apps :
   * unuseful scrollbar were removed
   * Dynamically resize of components after a window resizing
 * Code optimization
-  * CSS was dispaced by component - hack-4-apss.css was removed
-  * ui-section and ui-aplication inherits from a common component called ui-frame
+  * CSS was dispatched by component - hack-4-apps.css was removed
+  * ui-section and ui-application inherits from a common component called ui-frame
 * Bugs fixs
   * For chrome - resizing for two ways is completely available but after to collapse the component
 

@@ -47,13 +47,11 @@ HiveModule = __decorate([
     })
 ], HiveModule);
 exports.HiveModule = HiveModule;
-document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/normalize.css" type="text/css"/>';
-document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/normalize-4-apps.css" type="text/css"/>';
 document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/themify-icons.css" type="text/css"/>';
 document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/font-awesome.css" type="text/css"/>';
 try {
     if (__webpack_require__ !== 'undefined') {
-        console.log("webpack-4-apps.css loading...");
+        console.log("%s webpack-4-apps.css loading...", "Ng UI Application ->");
         document.querySelector('head').innerHTML += '<link rel="stylesheet" href="__hive-4-apps/styles/webpack-4-apps.css" type="text/css"/>';
     }
 }

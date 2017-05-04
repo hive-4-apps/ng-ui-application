@@ -1,8 +1,9 @@
 {
   "name": "ng-ui-application",
-  "version": "0.6.2",
+  "version": "0.6.4",
   "scripts": {
-    "postinstall": "gulp --gulpfile gulpfile.js"
+    "postinstall": "gulp install --gulpfile gulpfile.js",
+    "uninstall" : "gulp uninstall --gulpfile gulpfile.js"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,11 @@
   "devDependencies": {},
   "dependencies": {
     "gulp": "latest ",
-    "gulp-prompt-async": "latest",
+    "gulp-prompt": "latest",
+    "gulp-json-modify": "latest",
+    "gulp-insert-lines": "latest", 
+    "gulp-replace": "latest", 
+    "gulp-clean": "latest", 
     "insert-css": "^2.0.0",
     "normalize.css": "latest",
     "themify-icons": "^1.0.0"

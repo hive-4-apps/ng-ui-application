@@ -1435,30 +1435,56 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
   display: flex;
   background: #23282d;
   overflow: hidden; }
-  :host:first-child > div.ui-slice.column {
-    border-left: none; }
-  :host:first-child > div.ui-slice.row {
-    border-top: none; }
-  :host:last-child {
+  :host > div.ui-slice {
+    display: flex;
     flex: 1;
-    resize: none !important; }
-    :host:last-child > div.ui-slice.column {
-      border-right: none; }
-    :host:last-child > div.ui-slice.row {
-      border-bottom: none; }
+    overflow: hidden; }
+    :host > div.ui-slice /deep/ > ui-section:last-child {
+      resize: none !important;
+      flex: 1; }
+    :host > div.ui-slice.row {
+      border-top: 1px solid #060708;
+      border-bottom: 1px solid #060708; }
+      :host > div.ui-slice.row /deep/ > ui-section {
+        border-right: 1px solid #060708;
+        flex-direction: row;
+        resize: horizontal; }
+        :host > div.ui-slice.row /deep/ > ui-section /deep/ > ui-frame {
+          border-right: 1px solid #060708; }
+        :host > div.ui-slice.row /deep/ > ui-section:last-child {
+          border-right: 0; }
+          :host > div.ui-slice.row /deep/ > ui-section:last-child:first-child /deep/ > ui-frame {
+            border-right: 0; }
+        :host > div.ui-slice.row /deep/ > ui-section > div.ui-slice-buttons {
+          width: 12px; }
+    :host > div.ui-slice.column {
+      border-left: 1px solid #060708;
+      border-right: 1px solid #060708; }
+      :host > div.ui-slice.column /deep/ > ui-section {
+        border-bottom: 1px solid #060708;
+        flex-direction: column;
+        resize: vertical; }
+        :host > div.ui-slice.column /deep/ > ui-section /deep/ > ui-frame {
+          border-bottom: 1px solid #060708; }
+        :host > div.ui-slice.column /deep/ > ui-section:last-child {
+          border-bottom: 0; }
+          :host > div.ui-slice.column /deep/ > ui-section:last-child:first-child /deep/ > ui-frame {
+            border-bottom: 0; }
+        :host > div.ui-slice.column /deep/ > ui-section > div.ui-slice-buttons {
+          height: 12px; }
   :host > div.ui-slice-buttons {
     position: relative;
     display: flex;
     align-items: flex-end;
     background: #23282d;
-    z-index: 3;
-    background: #23282d; }
+    z-index: 3; }
     :host > div.ui-slice-buttons > button.btn-resize {
-      /* Use only for Chrome */
+      /* For the moment : use only for Chrome */
+      background: #23282d;
       width: 12px;
       height: 12px;
       line-height: 4px;
-      bottom: 0px;
+      bottom: 0;
       right: 0;
       position: absolute;
       padding: 0;
@@ -1480,50 +1506,26 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         font-size: 10px;
         color: inherit; }
       :host > div.ui-slice-buttons > button.btn-resize:before {
-        margin-right: 0px;
+        margin-right: 0;
         font-size: 8px; }
-    :host > div.ui-slice-buttons > button.btn-resize {
-      background: #23282d; }
-  :host > div.ui-slice {
-    display: flex;
-    flex: 1;
-    overflow: hidden; }
-    :host > div.ui-slice /deep/ > ui-section:last-child {
-      resize: none !important;
-      flex: 1; }
-    :host > div.ui-slice.row {
-      border-top: 1px solid #060708;
-      border-bottom: 1px solid #060708; }
-      :host > div.ui-slice.row /deep/ > ui-section {
-        border-right: 1px solid #060708;
-        resize: horizontal; }
-        :host > div.ui-slice.row /deep/ > ui-section:last-child {
-          border-right: 0; }
-        :host > div.ui-slice.row /deep/ > ui-section > div.ui-slice-buttons {
-          width: 12px; }
-        :host > div.ui-slice.row /deep/ > ui-section /deep/ > ui-frame {
-          border-right: 1px solid #060708; }
-    :host > div.ui-slice.column {
-      border-left: 1px solid #060708;
-      border-right: 1px solid #060708; }
-      :host > div.ui-slice.column /deep/ > ui-section {
-        border-bottom: 1px solid #060708;
-        resize: vertical;
-        flex-direction: column; }
-        :host > div.ui-slice.column /deep/ > ui-section /deep/ > ui-frame {
-          border-bottom: 1px solid #060708; }
-          :host > div.ui-slice.column /deep/ > ui-section /deep/ > ui-frame header {
-            flex-shrink: 1; }
-          :host > div.ui-slice.column /deep/ > ui-section /deep/ > ui-frame footer {
-            flex-shrink: 1; }
-        :host > div.ui-slice.column /deep/ > ui-section:last-child {
-          border-bottom: 0; }
-        :host > div.ui-slice.column /deep/ > ui-section > div.ui-slice-buttons {
-          height: 12px; }
+  :host:first-child > div.ui-slice.column {
+    border-left: none; }
+  :host:first-child > div.ui-slice.row {
+    border-top: none; }
+  :host:last-child {
+    resize: none !important;
+    flex: 1; }
+    :host:last-child > div.ui-slice.column {
+      border-right: none; }
+    :host:last-child > div.ui-slice.row {
+      border-bottom: none; }
 
 @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   :host > .ui-slice.row /deep/ > ui-section > div.ui-slice-buttons {
     height: inherit; }
+  :host > .ui-slice.column /deep/ > ui-section /deep/ > ui-frame > header, :host > .ui-slice.column /deep/ > ui-section /deep/ > ui-frame > footer {
+    flex-shrink: 1;
+    /*when resize until 0, avoid to hide resize icon*/ }
   :host > .ui-slice.column /deep/ > ui-section > div.ui-slice-buttons {
     width: inherit; } }
 `],

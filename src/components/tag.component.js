@@ -51,6 +51,7 @@ UITagComponent = __decorate([
     align-items: center;
     height: inherit; }
   :host > h1 {
+    /* Application title */
     margin-top: 0;
     margin-bottom: 0;
     flex-shrink: 0;
@@ -67,6 +68,7 @@ UITagComponent = __decorate([
       :host > h1 > /deep/ ui-label > span.label:not(.unique) {
         margin-left: 5px; }
   :host > h2 {
+    /* Section title */
     margin-top: 0;
     margin-bottom: 0;
     flex-shrink: 0;
@@ -82,87 +84,6 @@ UITagComponent = __decorate([
       font-size: 0.7em; }
       :host > h2 > /deep/ ui-label > span.label:not(.unique) {
         margin-left: 5px; }
-  :host.unique-tab {
-    display: flex;
-    flex: 1; }
-    :host.unique-tab > h3 {
-      display: flex;
-      flex: 1;
-      margin-bottom: -1px; }
-      :host.unique-tab > h3 > /deep/ ui-label > img {
-        height: 14px;
-        width: 14px; }
-      :host.unique-tab > h3 > /deep/ ui-label > span.icon {
-        color: #b9c1c9;
-        font-size: 0.9em; }
-      :host.unique-tab > h3 > /deep/ ui-label > span.label {
-        color: #b9c1c9;
-        font-size: 0.9em; }
-        :host.unique-tab > h3 > /deep/ ui-label > span.label:not(.unique) {
-          margin-left: 5px; }
-  :host:not(.unique-tab) > h3 {
-    margin-bottom: -1px; }
-  :host > h3 {
-    line-height: 26px;
-    border: 1px solid #060708;
-    border-bottom: none;
-    margin: 0px;
-    padding: 0 5px;
-    height: 25px;
-    font-weight: normal; }
-    :host > h3 > a {
-      text-decoration: none;
-      border-left: 1px solid transparent;
-      border-right: 1px solid transparent;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center; }
-      :host > h3 > a > /deep/ ui-label > img {
-        height: 14px;
-        width: 14px; }
-      :host > h3 > a > /deep/ ui-label > span.icon {
-        color: #b9c1c9;
-        font-size: 0.9em; }
-      :host > h3 > a > /deep/ ui-label > span.label {
-        color: #b9c1c9;
-        font-size: 0.9em; }
-        :host > h3 > a > /deep/ ui-label > span.label:not(.unique) {
-          margin-left: 5px; }
-  :host.active {
-    z-index: 2;
-    margin-bottom: -1px; }
-    :host.active > h3 {
-      background-color: #505b66;
-      border: 1px solid #505b66;
-      border-bottom: none;
-      border-top-left-radius: 2.5px;
-      border-top-right-radius: 2.5px; }
-    :host.active.focus > h3 {
-      border: 1px solid #1D71BC;
-      border-bottom: none;
-      z-index: 2; }
-      :host.active.focus > h3 > /deep/ ui-label > img {
-        height: 14px;
-        width: 14px; }
-      :host.active.focus > h3 > /deep/ ui-label > span.icon {
-        color: #f0f0f0;
-        font-size: 0.9em; }
-      :host.active.focus > h3 > /deep/ ui-label > span.label {
-        color: #f0f0f0;
-        font-size: 0.9em; }
-        :host.active.focus > h3 > /deep/ ui-label > span.label:not(.unique) {
-          margin-left: 5px; }
-      :host.active.focus > h3 > a > /deep/ ui-label > img {
-        height: 14px;
-        width: 14px; }
-      :host.active.focus > h3 > a > /deep/ ui-label > span.icon {
-        color: #f0f0f0;
-        font-size: 0.9em; }
-      :host.active.focus > h3 > a > /deep/ ui-label > span.label {
-        color: #f0f0f0;
-        font-size: 0.9em; }
-        :host.active.focus > h3 > a > /deep/ ui-label > span.label:not(.unique) {
-          margin-left: 5px; }
 `],
         template: `<h1 *ngIf="hlevel == 1">
     <a *ngIf="link" href="{{link}}">
